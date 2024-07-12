@@ -3,10 +3,17 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
 import CreateStudent from "../pages/admin/CreateStudent";
+import { Link } from "react-router-dom";
 
 type TRoutes = {
   path: string;
   element: ReactNode;
+};
+
+type TAdminSideBarItem = {
+  key: string;
+  label: ReactNode;
+  children ?: TAdminSideBarItem[]
 };
 
 export const adminPaths = [
@@ -55,23 +62,26 @@ for (const element of adminPaths) {
   }
 }
 
-// const adminPaths = [
-//   {
-//     path: "dashboard",
-//     element: <AdminDashboard></AdminDashboard>,
-//   },
-//   {
-//     path: "create-student",
-//     element: <CreateStudent></CreateStudent>,
-//   },
-//   {
-//     path: "create-admin",
-//     element: <CreateAdmin></CreateAdmin>,
-//   },
-//   {
-//     path: "create-faculty",
-//     element: <CreateFaculty></CreateFaculty>,
-//   },
-// ];
+
+export const adminSideBarItems : TAdminSideBarItem[] = [];
+for (const element of adminPaths) {
+  if (element.name && element.path) {
+    adminSideBarItems.push({
+      key: element.name,
+      label:<Link to={`/admin/${element.path}`} >{element.name}</Link>,
+    });
+  }
+  if (element.name && element.children) {
+    adminSideBarItems.push({
+      key: element.name,
+      label:element.name,
+      children:element.children.map(item =>({
+        key: item.name,
+        label:<Link to={`/admin/${item.path}`} >{item.name}</Link>,
+      }))
+    })
+  }
+}
+
 
 export default adminPaths;
