@@ -5,7 +5,7 @@ type TRoutes = {
   element: ReactNode;
 };
 
-type TPaths=  {
+export type TPaths=  {
     name: string,
     path?: string,
     element?: ReactNode,
