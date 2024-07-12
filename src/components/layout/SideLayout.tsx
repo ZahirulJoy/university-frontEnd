@@ -5,7 +5,29 @@ import { facultyPaths } from "../../routes/faculty.routes";
 
 const {Sider} = Layout;
 
+const userRole={
+    STUDENT:"student",
+    ADMIN:"admin",
+    FACULTY:"faculty"
+}
+
 const SideLayout = () => {
+    const role="faculty"
+    let items;
+    switch (role) {
+        case userRole.STUDENT:
+            items= sideBarItemsGenerator(facultyPaths,userRole.STUDENT)
+            break;
+        case userRole.ADMIN:
+            items=sideBarItemsGenerator(adminPaths,userRole.ADMIN)
+            break;
+        case userRole.FACULTY:
+           items= sideBarItemsGenerator(facultyPaths,userRole.FACULTY)
+            break;
+        default:
+            break;
+    }
+
     return (
         <Sider
         breakpoint="lg"
@@ -16,7 +38,7 @@ const SideLayout = () => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["4"]}
-          items={sideBarItemsGenerator(facultyPaths,"faculty")}
+          items={items}
         />
       </Sider>
     );
