@@ -5,10 +5,7 @@ import CreateFaculty from "../pages/admin/CreateFaculty";
 import CreateStudent from "../pages/admin/CreateStudent";
 import { Link } from "react-router-dom";
 
-type TRoutes = {
-  path: string;
-  element: ReactNode;
-};
+
 
 type TAdminSideBarItem = {
   key: string;
@@ -44,23 +41,7 @@ export const adminPaths = [
   },
 ];
 
-export const adminRoutes: TRoutes[] = [];
-for (const element of adminPaths) {
-  if (element.name && element.path) {
-    adminRoutes.push({
-      path: element.path,
-      element: element.element,
-    });
-  }
-  if (element.name && element.children) {
-    for (const childrenElement of element.children) {
-      adminRoutes.push({
-        path: childrenElement.path,
-        element: childrenElement.element,
-      });
-    }
-  }
-}
+
 
 export const adminSideBarItems : TAdminSideBarItem[] = [];
 for (const element of adminPaths) {
