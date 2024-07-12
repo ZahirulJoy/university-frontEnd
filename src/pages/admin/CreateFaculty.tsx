@@ -1,7 +1,7 @@
 const CreateFaculty = () => {
     return (
         <div>
-            <h1>This is Crate Student</h1>
+            <h1>Faculty</h1>
         </div>
     );
 };

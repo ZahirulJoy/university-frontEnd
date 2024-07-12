@@ -1,5 +1,6 @@
 import { Layout, Menu } from "antd";
 import { MenuProps } from "rc-menu";
+import { Link, Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 
 const items: MenuProps["items"] = [
@@ -8,24 +9,20 @@ const items: MenuProps["items"] = [
     label: "Dashboard",
   },
   {
-    key: "Profile",
-    label: "Profile",
-  },
-  {
     key: "User Management",
     label: "User Management",
     children: [
       {
-        key: "Dashboard",
-        label: "Dashboard",
+        key: "Create Student",
+        label: <Link to="/admin/create-student">Create Student</Link>,
       },
       {
-        key: "Profile",
-        label: "Profile",
+        key: "Create Admin",
+        label: <Link to="/admin/create-admin">Create Admin</Link>,
       },
       {
-        key: "User Management",
-        label: "User Management",
+        key: "Create Faculty",
+        label: <Link to="/admin/create-faculty">Create Faculty</Link>,
       },
     ],
   },
@@ -61,7 +58,7 @@ const MainLayout = () => {
               minHeight: 360,
             }}
           >
-            content
+            <Outlet></Outlet>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
