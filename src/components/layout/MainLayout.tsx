@@ -1,21 +1,39 @@
-import { Layout, Menu } from 'antd';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
-import React from 'react';
+import { Layout, Menu } from "antd";
+import { MenuProps } from "rc-menu";
 const { Header, Content, Footer, Sider } = Layout;
 
-
-const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
-    (icon, index) => ({
-      key: String(index + 1),
-      icon: React.createElement(icon),
-      label: `nav ${index + 1}`,
-    }),
-  );
-
+const items: MenuProps["items"] = [
+  {
+    key: "Dashboard",
+    label: "Dashboard",
+  },
+  {
+    key: "Profile",
+    label: "Profile",
+  },
+  {
+    key: "User Management",
+    label: "User Management",
+    children: [
+      {
+        key: "Dashboard",
+        label: "Dashboard",
+      },
+      {
+        key: "Profile",
+        label: "Profile",
+      },
+      {
+        key: "User Management",
+        label: "User Management",
+      },
+    ],
+  },
+];
 
 const MainLayout = () => {
   return (
-    <Layout style={{height:"100vh"}} >
+    <Layout style={{ height: "100vh" }}>
       <Sider
         breakpoint="lg"
         collapsedWidth="0"
@@ -26,7 +44,7 @@ const MainLayout = () => {
           console.log(collapsed, type);
         }}
       >
-        <div className="demo-logo-vertical" />
+        <div style={{color:"white",height:"4rem",display:"flex",justifyContent:"center",alignItems:'center'}} >UNIVERSITY MANAGEMENT</div>
         <Menu
           theme="dark"
           mode="inline"
@@ -35,7 +53,7 @@ const MainLayout = () => {
         />
       </Sider>
       <Layout>
-        <Header/>
+        <Header />
         <Content style={{ margin: "24px 16px 0" }}>
           <div
             style={{
