@@ -62,7 +62,6 @@ for (const element of adminPaths) {
   }
 }
 
-
 export const adminSideBarItems : TAdminSideBarItem[] = [];
 for (const element of adminPaths) {
   if (element.name && element.path) {
