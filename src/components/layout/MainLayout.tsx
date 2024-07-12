@@ -6,7 +6,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const items: MenuProps["items"] = [
   {
     key: "Dashboard",
-    label: "Dashboard",
+    label: <Link to="/admin/dashboard">Dashboard</Link>,
   },
   {
     key: "User Management",
