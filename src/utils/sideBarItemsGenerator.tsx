@@ -1,12 +1,7 @@
-import { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { TPaths } from "./routeGenerator";
+import { TAdminSideBarItem, TPaths } from "../types";
 
-type TAdminSideBarItem = {
-  key: string;
-  label: ReactNode;
-  children?: TAdminSideBarItem[];
-};
+
 
 export const sideBarItemsGenerator = (paths: TPaths[], role: string) => {
   const adminSideBarItems: TAdminSideBarItem[] = [];

@@ -1,16 +1,6 @@
-import { ReactNode } from "react";
+import { TPaths, TRoutes } from "../types";
 
-type TRoutes = {
-  path: string;
-  element: ReactNode;
-};
 
-export type TPaths=  {
-    name: string,
-    path?: string,
-    element?: ReactNode,
-    children?:TPaths[],
-  }
 
 export const routeGenerator = (paths : TPaths []) => {
   const routes: TRoutes[] = [];

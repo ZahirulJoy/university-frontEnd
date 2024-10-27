@@ -34,6 +34,4 @@ export const adminPaths = [
 
 
 
-
-
 export default adminPaths;
