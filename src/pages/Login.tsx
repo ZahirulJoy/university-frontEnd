@@ -4,12 +4,15 @@ import { useLoginMutation } from '../redux/features/auth/authApi';
 import { useAppDispatch } from '../redux/hook';
 import { setUser } from '../redux/features/auth/authSlice';
 import { verifyToken } from '../utils/verifyToken';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const Login = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      userId: 'A-0002',
+      userId: 'A-0001',
       password: 'admin123',
     },
   });
@@ -25,6 +28,8 @@ const Login = () => {
     const res = await login(userInfo).unwrap();
     const user = verifyToken(res.data.accessToken);
     dispatch(setUser({ user: user, token: res.data.accessToken }));
+    toast.success("Login Is Successfull")
+    navigate(`/${user.role}/dashboard`)
   };
 
   return (

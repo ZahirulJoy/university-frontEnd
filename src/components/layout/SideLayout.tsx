@@ -2,6 +2,7 @@ import { Menu ,Layout} from "antd";
 import { sideBarItemsGenerator } from "../../utils/sideBarItemsGenerator";
 import adminPaths from "../../routes/admin.routes";
 import { facultyPaths } from "../../routes/faculty.routes";
+import { useAppSelector } from "../../redux/hook";
 
 const {Sider} = Layout;
 
@@ -12,7 +13,8 @@ const userRole={
 }
 
 const SideLayout = () => {
-    const role="faculty"
+
+    const {role}=useAppSelector((state)=>state.auth.user)!;
     let items;
     switch (role) {
         case userRole.STUDENT:
