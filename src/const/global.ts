@@ -17,3 +17,9 @@ export const monthNames = [
     value: item,
     label: item,
   }));
+
+
+  export type TQueeryParams = {
+    name : string ,
+    value : string | number | boolean
+  }
